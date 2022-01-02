@@ -1,0 +1,19 @@
+p {
+    font-family: SeoulNamsan;
+}
+
+.freeColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 20px;
+
+    h1 {
+        font-family: Sansation;
+    }
+
+    p {
+        font-family: SansationLight;
+    }
+}

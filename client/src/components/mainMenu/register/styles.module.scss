@@ -1,0 +1,64 @@
+$strongColor: #E54B4B;
+$weakColor: #F7EBE8;
+
+.theContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.rowContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    
+    label {
+        font-family: SeoulNamsan;
+        text-align: right;
+        margin-right: 10px;
+        margin-bottom: 22px;
+    }
+    
+    input {
+        background-color: rgba(255, 255, 255, 0);
+        border: 1px solid $weakColor;
+        border-radius: 8px;
+        color: $weakColor;
+        font-family: SeoulNamsan;
+        width: 200px;
+        margin-bottom: 20px;
+    }
+    
+    button {
+        background-color: rgba(255, 255, 255, 0);
+        border: 1px solid $strongColor;
+        padding: 9px;
+        width: 40px;
+        height: 128px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: $strongColor;
+        font-family: SeoulNamsan;
+    }
+}
+
+.labelNL {
+    font-family: SeoulNamsan;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.inputNL {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid $weakColor;
+    border-radius: 8px;
+    color: $weakColor;
+    font-family: SeoulNamsan;
+    width: 200px;
+    margin-bottom: 20px;
+}

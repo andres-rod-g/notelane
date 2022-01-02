@@ -1,0 +1,20 @@
+$strongColor: #E54B4B;
+$weakColor: #F7EBE8;
+
+.botonNLDefault {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid $strongColor;
+    padding: 9px;
+    width: 200px;
+    border-radius: 8px;
+    color: $strongColor;
+    font-family: SeoulNamsan;
+}
+
+.backButton {
+    background-color: #ffffff00;
+    color: $weakColor;
+    border: 0px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
