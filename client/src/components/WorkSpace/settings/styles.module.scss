@@ -1,0 +1,38 @@
+
+$backgroundColor: #1E1E24;
+$backgroundTransparentColor: #0c0c0ed0;
+
+.settingsBackground {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;  
+    backdrop-filter: blur(5px);
+    background-color: $backgroundTransparentColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settingsPanel {
+    padding: 40px;
+    background-color: $backgroundColor;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+
+    button{
+        width: 20px;
+        height: 20px;
+        margin-bottom: 20px;
+
+        p{
+            margin-top: -9px;
+        }
+    }
+}
+
+.theContainer{
+}

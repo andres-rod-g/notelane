@@ -1,3 +1,5 @@
+$weakColor: #F7EBE8;
+
 @font-face {
   font-family: 'Sansation';
   src: local('Sansation'), url(../fonts/Sansation/Sansation_Regular.ttf) format('truetype');
@@ -11,6 +13,15 @@
 @font-face {
   font-family: 'SeoulNamsan';
   src: local('SeoulNamsan'), url(../fonts/Seoul/SeoulNamsanCondensed-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Solway';
+  src: local('Solway'), url(../fonts/Solway/Solway-Regular.ttf);
+}
+
+*:focus {
+  outline: none;
 }
 
 body {
@@ -111,3 +122,10 @@ body {
     transform: rotate(360deg);
   }
 }
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block; /* For Firefox */
+  color: #f7ebe86b;
+} 

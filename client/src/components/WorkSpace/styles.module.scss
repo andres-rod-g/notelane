@@ -1,0 +1,152 @@
+$strongColor: #E54B4B;
+$weakColor: #F7EBE8;
+$weakTextColor: #444140;
+$backgroundColor: #1E1E24;
+
+.workSpaceContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+// ==============
+// SIDEBAR
+// ==============
+.sideBar {
+    position:relative;
+    border-right: 1px solid $weakColor;
+    left: 0px;
+    top: 0px;
+    width: 340px;
+    min-height: 100vh;
+    font-family: Solway;
+    background-color: $backgroundColor;
+
+    z-index: 1;
+}
+
+.profileSection{
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $weakColor;
+    width: auto;
+    padding: 30px;
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #ffffff00;
+        border: 1px solid $weakColor;
+        border-radius: 8px;
+        color:$weakColor;
+    }
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        width: 70px;
+        height: 70px;
+        border: 1.5px solid $weakColor;
+        border-radius: 50px;
+        image-rendering: -moz-crisp-edges;         /* Firefox */
+        image-rendering:   -o-crisp-edges;         /* Opera */
+        image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
+    }
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 20px;
+
+    h1 {
+        margin: 0px;
+        font-size: 23px;
+    }
+
+    h2 {
+        margin: 0px;
+        color:$weakTextColor;
+        font-size: 15px;
+    }
+}
+
+.notesSection {
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 30px;
+
+
+    a{
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+}
+
+// ==============
+// WORKSPACE BODY
+// ==============
+.bodyContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    justify-content: left;
+}
+
+.toolBar {
+    background-color: #1e1e24;
+    position: sticky;
+    
+    button {
+        background-color: #1e1e2400;
+        border: 0px;
+        color: $weakColor;
+    }
+}
+
+.textBody {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    text-align: left;
+    font-family: Solway;
+
+    h4 {
+        color: $weakTextColor;
+        font-style: italic;
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    input {
+        background-color: #1e1e2400;
+        border: 0px;
+    }
+
+    z-index: 0;
+}
+
+.titleInput {
+    font-size: 50px;
+    height: 50px;
+    color: $weakColor;
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+
+.textInput{
+    font-size: 20px;
+}
