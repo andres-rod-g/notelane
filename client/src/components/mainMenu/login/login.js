@@ -11,6 +11,13 @@ import { BotonAtrasNL } from '../../../utilities/ui'
 export default ({setstate}) => {
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
+        const token = res?.tokenId;
+
+        try {
+            
+        } catch (error) {
+            console.log(error)
+        }
         console.log(res)
     }
     const googleFailure = () => {

@@ -29,33 +29,34 @@ export default () => {
 
     return (
         <div className={styles.workSpaceContainer}>
-            <Collapse in={sidebar} dimension={'width'} styles={{height: '100vh', width: '340px'}}>
-                <div className={styles.sideBar}>
-                    <div className={styles.profileSection}>
-                        <div className={styles.profile}>
-                            <img src={imagen}/>
-                            <div className={styles.data}>
-                                <h1>Andres R.</h1>
-                                <h2>01mwkp@gmail.com</h2>
+            <div style={{minWidth:'fit-content'}}>
+                <Collapse in={sidebar} dimension={'width'} styles={{height: '100vh', width: '400px'}}>
+                    <div className={styles.sideBar}>
+                        <div className={styles.profileSection}>
+                            <div className={styles.profile}>
+                                <img src={imagen}/>
+                                <div className={styles.data}>
+                                    <h1>Andres R.</h1>
+                                    <h2>01mwkp@gmail.com</h2>
+                                </div>
                             </div>
+                            <button onClick={() => setSettings(!settings)}>Settings</button>
+                            {
+                                settings
+                                    ? <Settings/>
+                                    : null
+                            }
                         </div>
-                        <button onClick={() => setSettings(!settings)}>Settings</button>
-                        {
-                            settings
-                                ? <Settings/>
-                                : null
-                        }
+                        <div className={styles.notesSection}>
+                            <a>This from here is a note.</a>
+                            <a>This from here is a note.</a>
+                            <a>This from here is a note.</a>
+                            <a>This from here is a note.</a>
+                            <a>This from here is a note.</a>
+                        </div>
                     </div>
-                    <div className={styles.notesSection}>
-                        <a>This from here is a note.</a>
-                        <a>This from here is a note.</a>
-                        <a>This from here is a note.</a>
-                        <a>This from here is a note.</a>
-                        <a>This from here is a note.</a>
-                    </div>
-                </div>
-
-            </Collapse>
+                </Collapse>
+            </div>
             <div className={styles.bodyContainer}>
                 <div className={styles.toolBar}>
                     <button onClick={()=>setSidebar(!sidebar)}>
