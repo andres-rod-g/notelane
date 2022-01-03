@@ -8,7 +8,7 @@ import WorkSpace from './components/WorkSpace/index'
 import './App.scss';
 
 function App() {
-  const [state, setstate] = useState(0)
+  const [state, setstate] = useState(0) 
 
   return (
     <div className="App">

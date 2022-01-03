@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactTypingEffect from 'react-typing-effect'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import logo from '../../NLLogo.png'
 import { Routes, Route, Link } from "react-router-dom";
@@ -12,7 +13,16 @@ import Register from './register/register'
 import '../../App.scss';
 
 export default function Index() {
+  const navigate = useNavigate()
   const [state, setstate] = useState(0)
+
+  const user = localStorage.getItem('User')
+
+  useEffect(() => {
+    if (user) {
+      navigate('/workspace')
+    }
+  }, [navigate])
 
   return (
     <Container className='pageContainer'>
