@@ -1,33 +1,40 @@
+//STYLES
 import styles from './styles.module.scss'
-
+//IMAGES
 import imagen from '../images/DE514271-1DCE-4691-A374-26C469E0F0C1.jpeg'
-
+//COMPONENTS
+import { Collapse, Fade } from 'react-bootstrap'
+import ContentEditable from 'react-contenteditable'
+import Settings from './settings/settings'
+// HOOKS AND MORE
+import { fetchNotes, createNotes, removeNote, updateNote } from '../../redux/actions/notesActions'
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react"
-import { Collapse, Fade } from 'react-bootstrap'
+import {useDispatch, useSelector} from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import ContentEditable from 'react-contenteditable'
-
-import Settings from './settings/settings'
+import { faChevronRight, faChevronLeft, faSave, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { updatingNotes } from '../../api/api'
 
 export default () => {
-    const textPlaceHolder = 'Write Something!'
+    const notes = useSelector((state) => state.notes)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     
     const [settings, setSettings] = useState(false)
     const [sidebar, setSidebar] = useState(true)
+
+    const [thisNote, setThisNote] = useState(null)
     const [title, setTitle] = useState(null)
     const [body, setBody] = useState(null)
 
-    const [userState, setUserState] = useState(null)
-
     const User = localStorage.getItem('User')
+    const [userState, setUserState] = useState(JSON.parse(User))
 
     useEffect(() => {
-        if (!User) navigate('/')
-        setUserState(JSON.parse(User))
+        if (!User) return navigate('/')
+        dispatch(fetchNotes(userState.googleId))
     }, [navigate])
+
 
     const handleTitle = (e) => {
         return setTitle(e.target.value)
@@ -35,7 +42,32 @@ export default () => {
 
     const handleText = (e) => {
         console.log(body)
-         return setBody(e.target.value)
+        return setBody(e.target.value)
+    }
+    
+    const selectNote = (noteId) => {
+        const noteArray = [...notes].filter((note) => note._id == noteId ? note : null)
+        const thisNote = noteArray[0]
+        console.log(thisNote)
+        setThisNote(noteId)
+        setTitle(thisNote.title)
+        setBody(thisNote.content)
+    }
+
+    const remove = (noteId) => {
+        dispatch(removeNote(thisNote))
+        notes.length === 1
+        ? setThisNote(null)
+        : selectNote(notes[0]._id)
+    }
+    
+    const save = (noteId) => {
+        const payload = {
+            title,
+            content: body,
+            lastEdited: new Date()
+        }
+        dispatch(updateNote(noteId, payload))
     }
 
     return (
@@ -60,7 +92,19 @@ export default () => {
                                 }
                             </div>
                             <div className={styles.notesSection}>
-                                <div onClick={() => console.log('Create Note')} className={styles.textButton}>Create New Note +</div>
+                                <div onClick={() => dispatch(createNotes(userState.googleId))} className={styles.textButton}>Create New Note +</div>
+                                {
+                                    notes?.length > 0
+                                    ? notes.map((note) => {
+                                        if(note.title !== ''){
+                                            return <a key={note._id} onClick={() => selectNote(note._id)}>{note.title}</a>
+                                        } else {
+                                            return <a key={note._id} onClick={() => selectNote(note._id)}>New Note</a>
+
+                                        }
+                                    })
+                                    : null
+                                }
                             </div>
                         </div>
                     </Collapse>
@@ -74,11 +118,27 @@ export default () => {
                                     : <FontAwesomeIcon icon={faChevronRight}/>
                             }
                         </button>
+                        {
+                            thisNote
+                                ?   <div>
+                                        <button onClick={() => remove()}><FontAwesomeIcon icon={faTrashAlt}/></button>
+                                        <button onClick={() => save(thisNote)}><FontAwesomeIcon icon={faSave}/></button>
+                                    </div>
+                                : null
+                        }
                     </div>
                     <div className={styles.textBody}>
-                        <h4>Title</h4>
-                        <ContentEditable className={styles.titleInput} html={title} onChange={handleTitle} placeholder='Title'/>
-                        <ContentEditable className={styles.textInput} html={body} onChange={handleText} placeholder='Write something!'/>
+                        {
+                            thisNote 
+                                ? <Fade appear={true} in={true}>
+                                    <div>
+                                        <h4>Title</h4>
+                                        <ContentEditable className={styles.titleInput} html={title} onChange={handleTitle} placeholder='Title'/>
+                                        <ContentEditable className={styles.textInput} html={body} onChange={handleText} placeholder='Write something!'/>    
+                                    </div>
+                                </Fade>
+                                : <Fade appear={true} in={true}><div><h1>Select one note.</h1></div></Fade>
+                        }
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ $backgroundColor: #1E1E24;
 // SIDEBAR
 // ==============
 .sideBar {
-    position:relative;
+    position:sticky;
     border-right: 1px solid $weakColor;
     left: 0px;
     top: 0px;
@@ -106,11 +106,18 @@ $backgroundColor: #1E1E24;
 }
 
 .toolBar {
-    background-color: #1e1e24;
     position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #1e1e24;
+    z-index: 0;
+    padding: 10px;
     
     button {
         background-color: #1e1e2400;
+        font-size: 20px;
         border: 0px;
         color: $weakColor;
     }
@@ -122,6 +129,7 @@ $backgroundColor: #1E1E24;
     padding: 100px;
     text-align: left;
     font-family: Solway;
+    z-index: -1;
 
     h4 {
         color: $weakTextColor;
@@ -153,4 +161,12 @@ $backgroundColor: #1E1E24;
 
 .textButton {
     color: $weakTextColor;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
 }
