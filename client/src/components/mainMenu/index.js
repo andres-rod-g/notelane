@@ -11,6 +11,7 @@ import Login from './login/login'
 import Register from './register/register'
 
 import '../../App.scss';
+import { VertLineNL } from '../../utilities/ui';
 
 export default function Index() {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ export default function Index() {
             <ReactTypingEffect className='typeEffect' text={['Elegant', 'Simple', 'Everything.']} speed={80} eraseSpeed={40} typingDelay={700}/>
         </div>
         </Col>
-        <div style={{borderLeft: '2px solid #F7EBE8', height: '250px', position:'absolute', left:'50%', width: '0'}}/>
+        <VertLineNL/>
         <Col xs={12} md={6} className='colSelection'>
         {
             state == 0

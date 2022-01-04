@@ -23,10 +23,9 @@ export default () => {
     const [userState, setUserState] = useState(null)
 
     const User = localStorage.getItem('User')
-    console.log(User)
 
     useEffect(() => {
-        if (!User) return navigate('/')
+        if (!User) navigate('/')
         setUserState(JSON.parse(User))
     }, [navigate])
 
@@ -53,20 +52,15 @@ export default () => {
                                         <h2>{userState?.email}</h2>
                                     </div>
                                 </div>
-                                <button onClick={() => setSettings(!settings)}>Settings</button>
+                                <button onClick={() => setSettings(true)}>Settings</button>
                                 {
                                     settings
-                                        ? <Settings/>
+                                        ? <Settings setSettings={setSettings}/>
                                         : null
                                 }
                             </div>
                             <div className={styles.notesSection}>
-                                <div>Create New Note +</div>
-                                <a>This from here is a note.</a>
-                                <a>This from here is a note.</a>
-                                <a>This from here is a note.</a>
-                                <a>This from here is a note.</a>
-                                <a>This from here is a note.</a>
+                                <div onClick={() => console.log('Create Note')} className={styles.textButton}>Create New Note +</div>
                             </div>
                         </div>
                     </Collapse>

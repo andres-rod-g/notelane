@@ -1,7 +1,7 @@
 import styles from './styles.module.scss'
 
 import { useNavigate } from 'react-router-dom'
-import { Button, Col, Fade, Form, Row } from "react-bootstrap"
+import { Col, Fade, Form, Row } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -10,7 +10,6 @@ import {GoogleLogin} from 'react-google-login'
 import {loginProcess} from '../../../redux/actions/loginActions.js'
 
 import { BotonAtrasNL } from '../../../utilities/ui'
-import { Navigate } from 'react-router-dom'
 
 export default ({setstate}) => {
     const dispatch = useDispatch()
@@ -50,7 +49,7 @@ export default ({setstate}) => {
                         <Col className={styles.inputContainer}>
                             <button type='submit'><FontAwesomeIcon icon={faChevronRight}/></button>
                         </Col>
-                        <GoogleLogin clientId='71825131047-g77sla1hs6hl3fo3m533kf2ppes9la4v.apps.googleusercontent.com' render={(renderProps) => (
+                        <GoogleLogin clientId={process.env.REACT_APP_CLIENT_ID} render={(renderProps) => (
                             <button onClick={renderProps.onClick} disabled={renderProps.disabled}> Google </button>
                         )} onSuccess={googleSuccess} onFailure={googleFailure} cookiePolicy='single_host_origin'/>
                     </Row>

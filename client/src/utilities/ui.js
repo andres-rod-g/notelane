@@ -14,3 +14,9 @@ export const BotonAtrasNL = ({setstate}) => {
         <button className={styles.backButton} onClick={() => setstate(0)} ><FontAwesomeIcon icon={faChevronLeft}/></button>
     )
 }
+
+export const VertLineNL = () => {
+    return (
+        <div style={{borderLeft: '2px solid #F7EBE8', height: '250px', position:'absolute', left:'50%', width: '0'}}/>
+    )
+}
