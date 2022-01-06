@@ -1,3 +1,8 @@
+$strongColor: #E54B4B;
+$weakColor: #F7EBE8;
+$weakTextColor: #444140;
+$backgroundColor: #1E1E24;
+
 p {
     font-family: SeoulNamsan;
 }
@@ -16,4 +21,25 @@ p {
     p {
         font-family: SansationLight;
     }
+}
+
+.theRow {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.buttonGoogle {
+    background-color: #ffffff00;
+    color: $weakColor;
+    font-family: Solway;
+    border: 1px solid $weakColor;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.buttonGoogle:disabled {
+    color: $weakTextColor;
+    border: 1px solid $weakTextColor;
 }
