@@ -3,7 +3,7 @@ import Note from '../models/noteModel.js'
 export const getNotes = async (req, res) => {
     const googleId = req.params.id
 
-    Note.find({googleId}, (err, data) => {
+    Note.find({googleId}).sort({lastEdited: 'desc'}).exec((err, data) => {
         if (err) return console.log(err)
         res.send(data)
     })

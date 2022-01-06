@@ -31,21 +31,20 @@ export default () => {
     const User = localStorage.getItem('User')
     const [userState, setUserState] = useState(JSON.parse(User))
     
-    setInterval(() => {
-        console.log('Intervalo cada X ms')
-        console.log(thisNote)
-        console.log(changed)
-        if (thisNote && changed) {
-            console.log('Condicion cumplida')
-            save(thisNote)
-            setChanged(false)
-        }
-    }, 2000);
     
     useEffect(() => {
-        if (!User) return navigate('/')
         dispatch(fetchNotes(userState.googleId))
-    }, [navigate])
+        if (!User) return navigate('/')
+        const timer = window.setInterval(() => {
+            if(changed && thisNote) {
+                save(thisNote)
+                setChanged(false);
+            }
+        }, 500);
+        return () => {
+        window.clearInterval(timer);
+        };
+    }, [navigate, thisNote, changed])
 
 
     const handleTitle = (e) => {
