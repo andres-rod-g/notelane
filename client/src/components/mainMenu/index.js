@@ -28,7 +28,7 @@ export default function Index() {
   return (
     <Container className='pageContainer'>
     <Row className='pageRow d-flex justify-content-center align-items-center'>
-        <Col xs={12} md={6} className='colTitleContainer'>
+        <Col xs={12} lg={6} className='colTitleContainer'>
         <Image src={logo} alt='Imagen' style={{width:'60px'}}/>
         <div className='colTitle'>
             <p className='pageTitle'>Notelane</p>
@@ -36,7 +36,7 @@ export default function Index() {
         </div>
         </Col>
         <VertLineNL/>
-        <Col xs={12} md={6} className='colSelection'>
+        <Col xs={12} lg={6} className='colSelection'>
         {
             state == 0
             ? <Selection setstate={setstate}/>

@@ -2,6 +2,10 @@
   "name": "notelane",
   "version": "0.1.0",
   "private": true,
+  "build": "react-scripts --max_old_space_size=4096 build",
+  "engines": {
+    "node": "16.13.1"
+  },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -29,11 +33,14 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "sass": "^1.45.2",
+    "serve": "^13.0.2",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
+    "heroku-postbuild": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

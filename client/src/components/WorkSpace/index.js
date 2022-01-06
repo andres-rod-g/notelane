@@ -13,15 +13,16 @@ import { useState, useEffect } from "react"
 import {useDispatch, useSelector} from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faSave, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import { updatingNotes } from '../../api/api'
 
 export default () => {
+    const parser = new DOMParser();
     const notes = useSelector((state) => state.notes)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     
     const [settings, setSettings] = useState(false)
     const [sidebar, setSidebar] = useState(true)
+    const [changed, setChanged] = useState(false)
 
     const [thisNote, setThisNote] = useState(null)
     const [title, setTitle] = useState(null)
@@ -29,7 +30,18 @@ export default () => {
 
     const User = localStorage.getItem('User')
     const [userState, setUserState] = useState(JSON.parse(User))
-
+    
+    setInterval(() => {
+        console.log('Intervalo cada X ms')
+        console.log(thisNote)
+        console.log(changed)
+        if (thisNote && changed) {
+            console.log('Condicion cumplida')
+            save(thisNote)
+            setChanged(false)
+        }
+    }, 2000);
+    
     useEffect(() => {
         if (!User) return navigate('/')
         dispatch(fetchNotes(userState.googleId))
@@ -37,11 +49,12 @@ export default () => {
 
 
     const handleTitle = (e) => {
+        setChanged(true)
         return setTitle(e.target.value)
     }
 
     const handleText = (e) => {
-        console.log(body)
+        setChanged(true)
         return setBody(e.target.value)
     }
     
@@ -56,9 +69,7 @@ export default () => {
 
     const remove = (noteId) => {
         dispatch(removeNote(thisNote))
-        notes.length === 1
-        ? setThisNote(null)
-        : selectNote(notes[0]._id)
+        setThisNote(null)
     }
     
     const save = (noteId) => {
@@ -97,7 +108,7 @@ export default () => {
                                     notes?.length > 0
                                     ? notes.map((note) => {
                                         if(note.title !== ''){
-                                            return <a key={note._id} onClick={() => selectNote(note._id)}>{note.title}</a>
+                                            return <a key={note._id} onClick={() => selectNote(note._id)} html={note.title} dangerouslySetInnerHTML={{__html: note.title}}></a>
                                         } else {
                                             return <a key={note._id} onClick={() => selectNote(note._id)}>New Note</a>
 
@@ -130,13 +141,13 @@ export default () => {
                     <div className={styles.textBody}>
                         {
                             thisNote 
-                                ? <Fade appear={true} in={true}>
-                                    <div>
-                                        <h4>Title</h4>
-                                        <ContentEditable className={styles.titleInput} html={title} onChange={handleTitle} placeholder='Title'/>
-                                        <ContentEditable className={styles.textInput} html={body} onChange={handleText} placeholder='Write something!'/>    
-                                    </div>
-                                </Fade>
+                                ?   <Fade appear={true} in={true}>
+                                        <div>
+                                            <h4>Title</h4>
+                                            <ContentEditable spellCheck={false} className={styles.titleInput} html={title} onChange={handleTitle} placeholder='Title'/>
+                                            <ContentEditable spellCheck={false} className={styles.textInput} html={body} onChange={handleText} placeholder='Write something!'/>    
+                                        </div>
+                                    </Fade>
                                 : <Fade appear={true} in={true}><div><h1>Select one note.</h1></div></Fade>
                         }
                     </div>

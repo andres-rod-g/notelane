@@ -8,6 +8,7 @@ $backgroundTransparentColor: #0c0c0ed0;
     left: 0px;
     width: 100vw;
     height: 100vh;  
+    z-index: 2;
     backdrop-filter: blur(5px);
     background-color: $backgroundTransparentColor;
     display: flex;
@@ -18,6 +19,7 @@ $backgroundTransparentColor: #0c0c0ed0;
 .settingsPanel {
     background-color: $backgroundColor;
     border-radius: 8px;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items:flex-end;

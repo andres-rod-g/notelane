@@ -99,6 +99,7 @@ $backgroundColor: #1E1E24;
     display: flex;
     flex-direction: column;
     width: 100%;
+    z-index: 0;
     margin: 0;
     padding: 0;
     text-align: left;
@@ -112,7 +113,7 @@ $backgroundColor: #1E1E24;
     flex-direction: row;
     justify-content: space-between;
     background-color: #1e1e24;
-    z-index: 0;
+    z-index: 1;
     padding: 10px;
     
     button {
@@ -130,6 +131,7 @@ $backgroundColor: #1E1E24;
     text-align: left;
     font-family: Solway;
     z-index: -1;
+    width: 100%;
 
     h4 {
         color: $weakTextColor;
@@ -148,7 +150,7 @@ $backgroundColor: #1E1E24;
 
 .titleInput {
     font-size: 50px;
-    height: 50px;
+    height:fit-content;
     color: $weakColor;
     margin: 0px;
     margin-bottom: 30px;

@@ -17,6 +17,6 @@ export const BotonAtrasNL = ({setstate}) => {
 
 export const VertLineNL = () => {
     return (
-        <div style={{borderLeft: '2px solid #F7EBE8', height: '250px', position:'absolute', left:'50%', width: '0'}}/>
+        <div className={styles.vertLine}/>
     )
 }

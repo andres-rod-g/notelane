@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = 'http://192.168.20.21:5000/api'
+const API = 'https://notelane-backend.herokuapp.com/api'
 
 export const isUserRegistered = async (userInfo) => axios.get(`${API}/auth?email=${userInfo.email}&name=${userInfo.givenName}&userImage=${userInfo.imageUrl}&googleId=${userInfo.googleId}`)
 

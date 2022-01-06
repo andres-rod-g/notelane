@@ -27,8 +27,10 @@ export default ({setstate}) => {
         }
         console.log(res)
     }
-    const googleFailure = () => {
-        console.log('Google Error')
+    const googleFailure = (error, details) => {
+        console.log(error)
+        console.log(details)
+
         setstate(0)
     }
 
@@ -49,9 +51,9 @@ export default ({setstate}) => {
                         <Col className={styles.inputContainer}>
                             <button type='submit'><FontAwesomeIcon icon={faChevronRight}/></button>
                         </Col>
-                        <GoogleLogin clientId={process.env.REACT_APP_CLIENT_ID} render={(renderProps) => (
+                        <GoogleLogin clientId={'71825131047-g77sla1hs6hl3fo3m533kf2ppes9la4v.apps.googleusercontent.com'} render={(renderProps) => (
                             <button onClick={renderProps.onClick} disabled={renderProps.disabled}> Google </button>
-                        )} onSuccess={googleSuccess} onFailure={googleFailure} cookiePolicy='single_host_origin'/>
+                        )} onSuccess={googleSuccess} onFailure={(error, details) => googleFailure(error, details)} cookiePolicy='single_host_origin'/>
                     </Row>
                     <Row>
                     </Row>
