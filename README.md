@@ -11,7 +11,8 @@ All this project was developed by [Andrés Rodríguez](https://www.linkedin.com/
 ![Notelane Workspace](https://i.ibb.co/0mRSTKL/Workspace.png)
 ![Notelane Note Test](https://i.ibb.co/42pY1tp/NoteTest.png)
 
-Notelane was built using the MERN Stack (MongoDB, Express, React and Node JS). It's free to use, and you can access to the app by clicking [here](notelane.herokuapp.com).
+Notelane was built using the MERN Stack (MongoDB, Express, React and Node JS). It's free to use, and you can access to the app by clicking [here](notelane.herokuapp.com) (NOTE: Notelane only was tested on PC).
+
 
 ## Resources Used:
 
