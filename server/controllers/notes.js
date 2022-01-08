@@ -6,7 +6,7 @@ export const getNotes = async (req, res) => {
     Note.find({googleId}).sort({lastEdited: 'desc'}).exec((err, data) => {
         if (err) return console.log(err)
         res.send(data)
-    })
+    }   )
 }
 
 export const postNote = async (req, res) => {

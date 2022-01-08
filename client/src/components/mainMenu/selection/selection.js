@@ -41,7 +41,7 @@ export default ({setstate}) => {
                 </Col>
                 <Col>
                     <GoogleLogin clientId={'71825131047-g77sla1hs6hl3fo3m533kf2ppes9la4v.apps.googleusercontent.com'} render={(renderProps) => (
-                    <button onClick={renderProps.onClick} disabled={renderProps.disabled} className={styles.buttonGoogle}> Google </button>
+                    <button onClick={renderProps.onClick} disabled={renderProps.disabled} className={styles.buttonGoogle}> Google Log in </button>
                     )} onSuccess={googleSuccess} onFailure={(error, details) => googleFailure(error, details)} cookiePolicy='single_host_origin'/>
                 </Col>
             </Row>

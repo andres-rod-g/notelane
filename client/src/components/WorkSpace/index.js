@@ -65,7 +65,7 @@ export default () => {
         setTitle(thisNote.title)
         setBody(thisNote.content)
     }
-
+    
     const remove = (noteId) => {
         dispatch(removeNote(thisNote))
         setThisNote(null)

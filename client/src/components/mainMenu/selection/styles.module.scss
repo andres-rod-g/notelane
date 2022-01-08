@@ -32,14 +32,14 @@ p {
 
 .buttonGoogle {
     background-color: #ffffff00;
-    color: $weakColor;
+    color: $strongColor;
     font-family: Solway;
-    border: 1px solid $weakColor;
+    border: 1px solid $strongColor;
     border-radius: 8px;
     padding: 30px;
 }
 
 .buttonGoogle:disabled {
-    color: $weakTextColor;
-    border: 1px solid $weakTextColor;
+    color: #e54b4b38;
+    border: 1px solid #E54B4B38;
 }
