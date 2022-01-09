@@ -1,6 +1,6 @@
 import Styles from './styles'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Image, StatusBar, Text, View, Button, TouchableOpacityComponent, TouchableOpacity } from 'react-native';
 import {
     GoogleSignin,
@@ -10,11 +10,14 @@ import {
 export default () => {
     const [userInfo, setUserInfo] = useState(null)
 
-    GoogleSignin.configure({
-        webClientId: '71825131047-g77sla1hs6hl3fo3m533kf2ppes9la4v.apps.googleusercontent.com',
-        offlineAccess: true,
-        forceCodeForRefreshToken: true
-    })
+    useEffect(() => {
+        GoogleSignin.configure({
+            webClientId: '71825131047-g77sla1hs6hl3fo3m533kf2ppes9la4v.apps.googleusercontent.com',
+            offlineAccess: true,
+            forceCodeForRefreshToken: true
+        })
+        
+    }, [input])
 
     const singIn = async () => {
         try {
