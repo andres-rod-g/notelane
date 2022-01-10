@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'General/images.dart';
 
 class MainMenu extends StatelessWidget {
@@ -10,6 +11,10 @@ class MainMenu extends StatelessWidget {
   static const COLOR_DEBIL = Color(0xFF444140);
   static const COLOR_TRANSPARENTE = Color(0xFFE54B4B);
 
+  static void google_verification() {
+    GoogleSignIn().signIn();
+  }
+
   const MainMenu({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +22,7 @@ class MainMenu extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: COLOR_OSCURO
           ),
           child: Column(
@@ -41,11 +46,12 @@ class MainMenu extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                Text(
-                  'Test',
-                  style: TextStyle(
-                    color: COLOR_CLARO
-                  ),
+                Padding(padding: EdgeInsets.only(top: 40)),
+                FloatingActionButton.extended(
+                  onPressed: google_verification,
+                  label: Text('Login With Google'),
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
                 )
               ],
             )
