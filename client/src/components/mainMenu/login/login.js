@@ -11,13 +11,12 @@ import {loginProcess} from '../../../redux/actions/loginActions.js'
 
 import { BotonAtrasNL } from '../../../utilities/ui'
 
-export default ({setstate}) => {
+const Login = ({setstate}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
-        const token = res?.tokenId;
 
         try {
             dispatch(loginProcess(result))
@@ -25,7 +24,6 @@ export default ({setstate}) => {
         } catch (error) {
             console.log(error)
         }
-        console.log(res)
     }
     const googleFailure = (error, details) => {
         console.log(error)
@@ -62,3 +60,5 @@ export default ({setstate}) => {
         </Fade>
     )
 }
+
+export default Login

@@ -1,16 +1,13 @@
 import styles from './styles.module.scss'
 
+import { Row, Col } from 'react-bootstrap'
+
 import { useState } from "react"
-import { Collapse, Fade, Container, Row, Col } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import ContentEditable from 'react-contenteditable'
+import { Fade } from 'react-bootstrap'
 
 import AccountSettings from './accountSettings/accountSettings.js'
-import { VertLineNL } from '../../../utilities/ui'
 
-export default ({setSettings}) => {
-    const [nombre, setNombre] = useState('nombre')
+const Settings = ({setSettings}) => {
     const [settingsPage, setSettingsPage] = useState(0)
 
     const handleClose = () => setSettings(false)
@@ -22,11 +19,14 @@ export default ({setSettings}) => {
                     <button onClick={handleClose} style={{height: '20px', padding:'5px'}}><p>x</p></button>
                     <Row className={styles.theContainer}>
                         <Col className={styles.optionContainer}>
-                            <a onClick={() => setSettingsPage(0)}>Account</a>
+                            {
+                                // eslint-disable-next-line
+                                <a onClick={() => setSettingsPage(0)}>Account</a>
+                            }
                         </Col>
                         <Col className={styles.settingsContainer}>
                             {
-                                settingsPage == 0
+                                settingsPage === 0
                                     ? <AccountSettings/>
                                     : null
                             }
@@ -37,3 +37,5 @@ export default ({setSettings}) => {
         </Fade>
     )
 }
+
+export default Settings

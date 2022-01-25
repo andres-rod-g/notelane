@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-export default () => {
+const AccoutSettings = () => {
     const navigate = useNavigate()
 
     const handleLogOut = () => {
@@ -15,3 +15,5 @@ export default () => {
         </>
     )
 }
+
+export default AccoutSettings

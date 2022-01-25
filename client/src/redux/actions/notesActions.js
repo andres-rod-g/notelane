@@ -26,7 +26,7 @@ export const createNotes = (googleId) => {
 export const removeNote = (noteId) => {
     return async (dispatch) => {
         console.log(noteId)
-        const {status} = await removingNotes(noteId)
+        await removingNotes(noteId)
         
         dispatch ({
             type: REMOVE_NOTE, 
@@ -38,7 +38,7 @@ export const removeNote = (noteId) => {
 export const updateNote = (noteId, noteData) => {
     return async (dispatch) => {
         console.log("Updating")
-        const {status} = await updatingNotes(noteId, noteData)
+        await updatingNotes(noteId, noteData)
 
         dispatch({
             type: UPDATE_NOTE,

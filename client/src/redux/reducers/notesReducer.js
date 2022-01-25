@@ -1,6 +1,6 @@
 import { FETCH_NOTES, NEW_NOTE, UPDATE_NOTE, REMOVE_NOTE } from "../Constants/types";
 
-export default (notes = [], action) => {
+const NotesReducer = (notes = [], action) => {
     switch(action.type) {
         case FETCH_NOTES:
             return action.payload
@@ -8,7 +8,7 @@ export default (notes = [], action) => {
             return [...notes, action.payload]
         case REMOVE_NOTE:
             let temp = [...notes]
-            temp = temp.filter((e) => e._id != action.noteId)
+            temp = temp.filter((e) => e._id !== action.noteId)
             return temp
         case UPDATE_NOTE:
             let temp2 = [...notes]
@@ -19,3 +19,5 @@ export default (notes = [], action) => {
             return notes
     }
 }
+
+export default NotesReducer

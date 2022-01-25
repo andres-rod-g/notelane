@@ -1,7 +1,5 @@
 //STYLES
 import styles from './styles.module.scss'
-//IMAGES
-import imagen from '../images/DE514271-1DCE-4691-A374-26C469E0F0C1.jpeg'
 //COMPONENTS
 import { Collapse, Fade } from 'react-bootstrap'
 import ContentEditable from 'react-contenteditable'
@@ -14,8 +12,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faSave, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-export default () => {
-    const parser = new DOMParser();
+const WorkSpace = () => {
+    // NOTESSS
     const notes = useSelector((state) => state.notes)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -28,13 +26,11 @@ export default () => {
     const [title, setTitle] = useState(null)
     const [body, setBody] = useState(null)
 
-    const User = localStorage.getItem('User')
-    const [userState, setUserState] = useState(JSON.parse(User))
-    
+    const User = JSON.parse(localStorage.getItem('User'))
     
     useEffect(() => {
-        dispatch(fetchNotes(userState.googleId))
         if (!User) return navigate('/')
+        dispatch(fetchNotes(User.googleId))
         const timer = window.setInterval(() => {
             if(changed && thisNote) {
                 save(thisNote)
@@ -44,7 +40,7 @@ export default () => {
         return () => {
         window.clearInterval(timer);
         };
-    }, [navigate, thisNote, changed])
+    })
 
 
     const handleTitle = (e) => {
@@ -58,9 +54,8 @@ export default () => {
     }
     
     const selectNote = (noteId) => {
-        const noteArray = [...notes].filter((note) => note._id == noteId ? note : null)
+        const noteArray = [...notes].filter((note) => note._id === noteId ? note : null)
         const thisNote = noteArray[0]
-        console.log(thisNote)
         setThisNote(noteId)
         setTitle(thisNote.title)
         setBody(thisNote.content)
@@ -88,10 +83,10 @@ export default () => {
                         <div className={styles.sideBar}>
                             <div className={styles.profileSection}>
                                 <div className={styles.profile}>
-                                    <img src={userState?.imageUrl}/>
+                                    <img src={User?.imageUrl} alt='userImage'/>
                                     <div className={styles.data}>
-                                        <h1>{userState?.givenName}</h1>
-                                        <h2>{userState?.email}</h2>
+                                        <h1>{User?.givenName}</h1>
+                                        <h2>{User?.email}</h2>
                                     </div>
                                 </div>
                                 <button onClick={() => setSettings(true)}>Settings</button>
@@ -102,13 +97,15 @@ export default () => {
                                 }
                             </div>
                             <div className={styles.notesSection}>
-                                <div onClick={() => dispatch(createNotes(userState.googleId))} className={styles.textButton}>Create New Note +</div>
+                                <div onClick={() => dispatch(createNotes(User.googleId))} className={styles.textButton}>Create New Note +</div>
                                 {
                                     notes?.length > 0
                                     ? notes.map((note) => {
                                         if(note.title !== ''){
+                                            // eslint-disable-next-line
                                             return <a key={note._id} onClick={() => selectNote(note._id)} html={note.title} dangerouslySetInnerHTML={{__html: note.title}}></a>
                                         } else {
+                                            // eslint-disable-next-line
                                             return <a key={note._id} onClick={() => selectNote(note._id)}>New Note</a>
 
                                         }
@@ -155,3 +152,5 @@ export default () => {
         </Fade>
     )
 }
+
+export default WorkSpace;

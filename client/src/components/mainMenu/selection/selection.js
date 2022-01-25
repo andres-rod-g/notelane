@@ -1,5 +1,4 @@
 import Fade from 'react-bootstrap/Fade'
-import { BotonNL } from "../../../utilities/ui"
 import { Row, Col } from 'react-bootstrap'
 import styles from './styles.module.scss'
 import { useDispatch } from 'react-redux'
@@ -8,13 +7,12 @@ import {GoogleLogin} from 'react-google-login'
 import {loginProcess} from '../../../redux/actions/loginActions.js'
 import { useNavigate } from 'react-router-dom'
 
-export default ({setstate}) => {
+const Selection = ({setstate}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
-        const token = res?.tokenId;
     
         try {
             dispatch(loginProcess(result))
@@ -22,12 +20,10 @@ export default ({setstate}) => {
         } catch (error) {
             console.log(error)
         }
-        console.log(res)
       }
     
       const googleFailure = (error, details) => {
           console.log(error)
-          console.log(details)
     
           setstate(0)
       }
@@ -48,3 +44,5 @@ export default ({setstate}) => {
         </Fade>
     )
 }
+
+export default Selection

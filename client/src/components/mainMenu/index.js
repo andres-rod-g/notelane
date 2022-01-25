@@ -1,11 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactTypingEffect from 'react-typing-effect'
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../../NLLogo.png'
-import { Routes, Route, Link } from "react-router-dom";
 import { Col, Row, Container, Image } from 'react-bootstrap'
 import Selection from './selection/selection'
 import Login from './login/login'
@@ -24,6 +22,7 @@ export default function Index() {
     if (user) {
       navigate('/workspace')
     }
+    // eslint-disable-next-line
   }, [navigate])
 
   return (
@@ -39,9 +38,9 @@ export default function Index() {
         <VertLineNL/>
         <Col xs={12} lg={6} className='colSelection'>
         {
-            state == 0
+            state === 0
             ? <Selection setstate={setstate}/>
-            : state == 1
+            : state === 1
                 ? <Login setstate={setstate}/>
                 : <Register setstate={setstate}/>
         }

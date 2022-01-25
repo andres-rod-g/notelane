@@ -5,9 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { BotonAtrasNL } from '../../../utilities/ui'
 
-export default ({setstate}) => {
-
-    const options = [{label: 'Username', name: 'username'}, {label: 'E-Mail', name: 'email'}, {label: 'Password', name: 'password'} ]
+const Register = ({setstate}) => {
     return (
         <Fade appear={true} in={true}>
             <div className={styles.theContainer}>
@@ -33,3 +31,5 @@ export default ({setstate}) => {
         </Fade>
     )
 }
+
+export default Register
